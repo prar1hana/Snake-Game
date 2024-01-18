@@ -1,3 +1,8 @@
+/*
+  Snake Game Project
+  Inspired by CodewithHarry's "SnakeMania-Ek Gaming Katha"
+  Source: youtube
+*/
 // Game Constants & Variables
 let inputDir = {x: 0, y: 0}; 
 const foodSound = new Audio('music/food.mp3');
