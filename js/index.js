@@ -1,15 +1,45 @@
-/*
-  Snake Game Project
-  Inspired by CodewithHarry's "SnakeMania-Ek Gaming Katha"
-  Source: youtube
-*/
+
+let touchStartX, touchStartY;
+
+document.addEventListener('touchstart', handleTouchStart);
+document.addEventListener('touchmove', handleTouchMove);
+document.addEventListener('touchend', handleTouchEnd);
+
+function handleTouchStart(event) {
+  touchStartX = event.touches[0].clientX;
+  touchStartY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event) {
+  event.preventDefault(); // Prevent scrolling
+  const touchEndX = event.changedTouches[0].clientX;
+  const touchEndY = event.changedTouches[0].clientY;
+
+  const deltaX = touchEndX - touchStartX;
+  const deltaY = touchEndY - touchStartY;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Horizontal swipe
+    inputDir.x = deltaX > 0 ? 1 : -1;
+    inputDir.y = 0;
+  } else {
+    // Vertical swipe
+    inputDir.x = 0;
+    inputDir.y = deltaY > 0 ? 1 : -1;
+  }
+}
+
+function handleTouchEnd(event) {
+  // Handle touch end event if needed
+}
+
 // Game Constants & Variables
 let inputDir = {x: 0, y: 0}; 
 const foodSound = new Audio('music/food.mp3');
 const gameOverSound = new Audio('music/gameover.mp3');
 const moveSound = new Audio('music/move.mp3');
 const musicSound = new Audio('music/music.mp3');
-let speed = 11;
+let speed = 10;
 let score = 0;
 let lastPaintTime = 0;
 let snakeArr = [
@@ -60,10 +90,10 @@ function gameEngine(){
     if(snakeArr[0].y === food.y && snakeArr[0].x ===food.x){
         foodSound.play();
         score += 1;
-        if(score>hiscoreval){
-            hiscoreval = score;
-            localStorage.setItem("hiscore", JSON.stringify(hiscoreval));
-            hiscoreBox.innerHTML = "HighScore: " + hiscoreval;
+        if(score>HighScoreval){
+            HighScoreval = score;
+            localStorage.setItem("highScore", JSON.stringify(HighScoreval));
+            HighScoreBox.innerHTML = "HighScore: " + HighScoreval;
         }
         scoreBox.innerHTML = "Score: " + score;
         snakeArr.unshift({x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y});
@@ -102,21 +132,31 @@ function gameEngine(){
     foodElement.style.gridColumnStart = food.x;
     foodElement.classList.add('food')
     board.appendChild(foodElement);
-
+// Adjust the snake movement based on the screen width
+function adjustSpeedForScreenWidth() {
+    if (window.innerWidth < 600) {
+      speed = 8; // Adjust this value accordingly
+    } else {
+      speed = 10; // Default speed
+    }
+  }
+  
+  window.addEventListener('resize', adjustSpeedForScreenWidth);
+  
 
 }
 
 
 // Main logic starts here
 musicSound.play();
-let hiscore = localStorage.getItem("hiscore");
-if(hiscore === null){
-    hiscoreval = 0;
-    localStorage.setItem("hiscore", JSON.stringify(hiscoreval))
+let HighScore = localStorage.getItem("Highscore");
+if(HighScore === null){
+    HighScoreval = 0;
+    localStorage.setItem("highScore", JSON.stringify(HighScoreval))
 }
 else{
-    hiscoreval = JSON.parse(hiscore);
-    hiscoreBox.innerHTML = "HighScore: " + hiscore;
+    HighScoreval = JSON.parse(HighScore);
+    HighScoreBox.innerHTML = "HighScore: " + HighScore;
 }
 
 window.requestAnimationFrame(main);
