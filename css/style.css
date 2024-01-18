@@ -14,33 +14,34 @@
     align-items: center;
 }
 
+  
 #scoreBox{
     position: absolute;
     top: 9px;
     right: 200px;
-    font-size: 39px;
+    font-size: 5vw;
     font-weight: bold;
     font-family: 'New Tegomin', serif;
 }
 
-#hiscoreBox{
+#HighScoreBox{
     position: absolute;
     top: 59px;
     right: 140px;
-    font-size: 39px;
+    font-size: 5vw;
     font-weight: bold;
     font-family: 'New Tegomin', serif;
 }
 
 #board{
     background: linear-gradient(rgb(70, 178, 70), rgb(219, 147, 25));
-    width: 90vmin;
-    height: 92vmin;
+   
     border: 2px solid black;
     display: grid;
+    width: 50vw; /* Use viewport width for responsiveness */
+    height: 50vw; /* Adjust height as needed */
     grid-template-rows: repeat(18, 1fr);
     grid-template-columns: repeat(18, 1fr);
-}
 
 .head{
     background: linear-gradient(rgb(115, 26, 115), rgb(255, 255, 255));
