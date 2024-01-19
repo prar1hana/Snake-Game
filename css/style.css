@@ -42,7 +42,9 @@ body {
     display: grid;
     width: 80%; /* Use viewport width for responsiveness */
     height: 80%; /* Adjust height as needed */
-    margin: auto; /* Center the board horizontally */
+    max-width: 600px; /* Set a maximum width to prevent it from becoming too large */
+    max-height: 600px; /* Set a maximum height to prevent it from becoming too large */
+    margin: auto; /* Center the board horizontally and vertically */
     aspect-ratio: 1 / 1; /* Ensures the board maintains a square aspect ratio */
     grid-template-rows: repeat(18, 1fr);
     grid-template-columns: repeat(18, 1fr);
