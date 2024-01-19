@@ -40,8 +40,8 @@ body {
    
     border: 2px solid black;
     display: grid;
-    width: 50vw; /* Use viewport width for responsiveness */
-    height: 50vw; /* Adjust height as needed */
+    width: 60vw; /* Use viewport width for responsiveness */
+    height: 60vw; /* Adjust height as needed */
     grid-template-rows: repeat(18, 1fr);
     grid-template-columns: repeat(18, 1fr);
 
