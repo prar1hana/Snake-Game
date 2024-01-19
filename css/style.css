@@ -3,7 +3,9 @@
     padding: 0;
     margin: 0;
 }
-
+body {
+    overflow-y: hidden;
+}
 .body{
     background: url("../img/bg.jpg"); 
     min-height: 100vh;
