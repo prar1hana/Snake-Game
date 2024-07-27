@@ -8,7 +8,7 @@ body {
 }
 .body{
     background: url("../img/bg.jpg"); 
-    min-height: 100vh; /*kyoba*/
+    min-height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex; /*bodyt kyodibo lage*/
@@ -50,20 +50,20 @@ body {
 }
 
 .head{
-    background: linear-gradient(rgb(115, 26, 115), rgb(255, 255, 255));
-    border: 2px solid rgb(34, 4, 34); 
+    background: rgb(38, 6, 30);
+    border: 2px solid rgb(254, 254, 254); 
     transform: scale(1.02);
     border-radius: 9px;
 }
 
 .snake{
-    background-color: rgb(115, 26, 115);
+    background: linear-gradient(rgb(44, 2, 37),rgb(115, 26, 115));
     border: .25vmin solid white;
-    border-radius: 12px;
+    border-radius: 5px;
 }
 
 .food{
-    background: linear-gradient(red, rgb(120, 2, 2));
-    border: .25vmin solid black;
+    background: linear-gradient(rgb(229, 0, 0), rgb(120, 2, 2));
+    border: .25vmin solid rgb(250, 250, 250);
     border-radius: 8px;
 }
