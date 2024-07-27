@@ -1,4 +1,21 @@
 
+// Game Constants & Variables
+let inputDir = {x: 0, y: 0}; 
+const foodSound = new Audio('music/food.mp3');
+const gameOverSound = new Audio('music/gameover.mp3');
+const moveSound = new Audio('music/move.mp3');
+const musicSound = new Audio('music/music.mp3');
+let speed = 10;
+let score = 0;
+let lastPaintTime = 0;
+let snakeArr = [
+    {x: 13, y: 15}
+];
+
+food = {x: 6, y: 7};
+
+
+//added logic for touch screens!
 let touchStartX, touchStartY;
 
 document.addEventListener('touchstart', handleTouchStart);
@@ -30,23 +47,8 @@ function handleTouchMove(event) {
 }
 
 function handleTouchEnd(event) {
-  // Handle touch end event if needed
+  // Handling of touch end event (improvement)
 }
-
-// Game Constants & Variables
-let inputDir = {x: 0, y: 0}; 
-const foodSound = new Audio('music/food.mp3');
-const gameOverSound = new Audio('music/gameover.mp3');
-const moveSound = new Audio('music/move.mp3');
-const musicSound = new Audio('music/music.mp3');
-let speed = 10;
-let score = 0;
-let lastPaintTime = 0;
-let snakeArr = [
-    {x: 13, y: 15}
-];
-
-food = {x: 6, y: 7};
 
 // Game Functions
 function main(ctime) {
@@ -66,10 +68,10 @@ function isCollide(snake) {
             return true;
         }
     }
-    // If you bump into the wall
-    if(snake[0].x >= 18 || snake[0].x <=0 || snake[0].y >= 18 || snake[0].y <=0){
-        return true;
-    }
+    // // If you bump into the wall
+    // if(snake[0].x >= 18 || snake[0].x <=0 || snake[0].y >= 18 || snake[0].y <=0){
+    //     return true;
+    // }
         
     return false;
 }
@@ -97,9 +99,9 @@ function gameEngine(){
         }
         scoreBox.innerHTML = "Score: " + score;
         snakeArr.unshift({x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y});
-        let a = 2;
+        let a = 2; //dont make it 0 itself !
         let b = 16;
-        food = {x: Math.round(a + (b-a)* Math.random()), y: Math.round(a + (b-a)* Math.random())}
+        food = {x: Math.round(a + (b-a)* Math.random()), y: Math.round(a + (b-a)* Math.random())} // improvement- implement it :the food doesn't come in its body itself!
     }
 
     // Moving the snake
@@ -147,7 +149,7 @@ function adjustSpeedForScreenWidth() {
 }
 
 
-// Main logic starts here
+// Main logic
 musicSound.play();
 let HighScore = localStorage.getItem("Highscore");
 if(HighScore === null){
@@ -162,7 +164,7 @@ else{
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
     inputDir = {x: 0, y: 1} // Start the game
-    musicSound.play();
+    //musicSound.play();
     moveSound.play();
     
     switch (e.key) {
