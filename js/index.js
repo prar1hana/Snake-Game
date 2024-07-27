@@ -68,10 +68,10 @@ function isCollide(snake) {
             return true;
         }
     }
-    // // If you bump into the wall
-    // if(snake[0].x >= 18 || snake[0].x <=0 || snake[0].y >= 18 || snake[0].y <=0){
-    //     return true;
-    // }
+    // If you bump into the wall
+    if(snake[0].x >= 18 || snake[0].x <=0 || snake[0].y >= 18 || snake[0].y <=0){
+        return true;
+    }
         
     return false;
 }
@@ -84,7 +84,7 @@ function gameEngine(){
         inputDir =  {x: 0, y: 0}; 
         alert("Game Over. Press any key to play again!");
         snakeArr = [{x: 13, y: 15}];
-        musicSound.play();
+        // musicSound.play();
         score = 0; 
     }
 
@@ -150,7 +150,7 @@ function adjustSpeedForScreenWidth() {
 
 
 // Main logic
-musicSound.play();
+//musicSound.play();
 let HighScore = localStorage.getItem("Highscore");
 if(HighScore === null){
     HighScoreval = 0;
@@ -164,7 +164,7 @@ else{
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
     inputDir = {x: 0, y: 1} // Start the game
-    //musicSound.play();
+    musicSound.play();
     moveSound.play();
     
     switch (e.key) {
