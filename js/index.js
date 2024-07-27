@@ -4,7 +4,8 @@ let inputDir = {x: 0, y: 0};
 const foodSound = new Audio('music/food.mp3');
 const gameOverSound = new Audio('music/gameover.mp3');
 const moveSound = new Audio('music/move.mp3');
-const musicSound = new Audio('music/music.mp3');
+const musicSound = new Audio('music/music.wav');
+const nhs= new Audio('music/music.wav');
 let speed = 10;
 let score = 0;
 let lastPaintTime = 0;
@@ -82,7 +83,7 @@ function gameEngine(){
         gameOverSound.play();
         musicSound.pause();
         inputDir =  {x: 0, y: 0}; 
-        alert("Game Over! Press "ok" to play again!");
+        alert("Game Over. Press any key to play again!");
         snakeArr = [{x: 13, y: 15}];
         // musicSound.play();
         score = 0; 
@@ -150,16 +151,17 @@ function adjustSpeedForScreenWidth() {
 
 
 // Main logic
-//musicSound.play();
 let HighScore = localStorage.getItem("Highscore");
 if(HighScore === null){
     HighScoreval = 0;
     localStorage.setItem("highScore", JSON.stringify(HighScoreval))
 }
 else{
+    
     HighScoreval = JSON.parse(HighScore);
     HighScoreBox.innerHTML = "HighScore: " + HighScore;
 }
+
 
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
