@@ -9,6 +9,6 @@ Hit the link below and get started!!! 🚀
 [Play Coil Craft](https://prar1hana.github.io/Coil-Craft/)
 
 ## Rules:
-- If the coil hits the wall, you lose.
+- If the coil hits the boundary, you lose.
 - If you bump into yourself, you lose.
-- Attach the coil to the red cube to grow.
+- Attach the coil to the red cube from any side of the cube to grow.
